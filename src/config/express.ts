@@ -1,9 +1,11 @@
-import errorHandler from '../middleware/errorHandler';
-import notFoundHandler from '../middleware/notFoundHandler';
-import router from '../apps/routes';
+import express, { Application } from 'express';
 import cors from 'cors';
 
-import express, { Application } from 'express';
+import errorHandler from '../middleware/errorHandler';
+import notFoundHandler from '../middleware/notFoundHandler';
+
+import router from '../apps/routes';
+import { rateLimiter, speedLimiter } from '../utilities/rateSpeedLimiter';
 
 const createServer = (): Application => {
     const app: Application = express();
@@ -21,7 +23,7 @@ const createServer = (): Application => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
-    app.use('/', router);
+    app.use('/', rateLimiter, speedLimiter, router);
 
     // handle 404
     app.use(notFoundHandler);
