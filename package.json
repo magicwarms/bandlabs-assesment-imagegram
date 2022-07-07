@@ -4,7 +4,7 @@
     "description": "Band Labs Assesment - Imagegram",
     "main": "server.js",
     "scripts": {
-        "dev": "nodemon",
+        "dev": "ts-node-dev --respawn --pretty --transpile-only src/server.ts",
         "lint-and-fix": "eslint . --ext .ts --fix",
         "start": "set NODE_ENV=production && node dist/server.js",
         "build": "tsc -p ./",
@@ -44,10 +44,10 @@
         "@typescript-eslint/parser": "^5.30.5",
         "eslint": "^8.19.0",
         "jest": "^28.1.2",
-        "nodemon": "^2.0.19",
         "prettier": "^2.7.1",
         "ts-jest": "^28.0.5",
         "ts-node": "^10.8.2",
+        "ts-node-dev": "^2.0.0",
         "typescript": "^4.7.4"
     }
 }

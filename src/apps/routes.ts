@@ -8,11 +8,11 @@ const router = express.Router();
 /**
  * Controller Definition
  */
-router.use('/hello', (_req: Request, res: Response) => {
+router.use('/health', (_req: Request, res: Response) => {
     return res.status(200).json({
         success: true,
         data: {},
-        message: `Hello ${process.env.APP_NAME} - ${process.env.NODE_ENV}`,
+        message: `System UP and Running (${process.env.APP_NAME} - ${process.env.NODE_ENV})`,
     });
 });
 router.use('/boom', (): void => {
