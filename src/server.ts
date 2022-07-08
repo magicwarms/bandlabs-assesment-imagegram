@@ -4,9 +4,10 @@
 // import 'module-alias/register';
 import * as dotenv from 'dotenv';
 dotenv.config();
+import 'reflect-metadata';
 import http, { Server } from 'http';
-
 import createServer from './config/express';
+import AppDataSource from './config/datasource';
 
 /**
  * Set timezone
@@ -51,6 +52,13 @@ const setupCloseOnExit = (server: Server) => {
  * Server Activation
  */
 const startServer = async () => {
+    AppDataSource.initialize()
+        .then(() => {
+            console.log('Data Source has been initialized!');
+        })
+        .catch((err) => {
+            console.error('Error during Data Source initialization', err);
+        });
     const app = await createServer();
     const server = http.createServer(app).listen(PORT, () => {
         console.info(

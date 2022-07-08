@@ -23,7 +23,7 @@ const createServer = (): Application => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
-    app.use('/', rateLimiter, speedLimiter, router);
+    app.use('/api/v1', rateLimiter, speedLimiter, router);
 
     // handle 404
     app.use(notFoundHandler);

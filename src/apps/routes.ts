@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 
-// import organizationRouter from './apps/organization/organization.routes';
+import userRouter from '../apps/users/users.router';
+import postRouter from '../apps/posts/posts.router';
+
 /**
  * Router Definition
  */
@@ -17,9 +19,8 @@ router.use(
             message: `System UP and Running (${process.env.APP_NAME} - ${process.env.NODE_ENV})`,
         }),
 );
-router.use('/boom', (): void => {
-    throw new Error('Error occured');
-});
-// router.use('/employees', organizationRouter);
+
+router.use('/users', userRouter);
+router.use('/posts', postRouter);
 
 export default router;
