@@ -75,7 +75,7 @@ const uploadToCloudinary = (newPath: string, newFilename: string): Promise<cloud
 };
 
 export const submitPost = async (req: IncomingMessage, userId: string): Promise<Posts | ValidationError[]> => {
-    let resultStore: Posts = { id: '', userId: '', postUrl: '', caption: '' };
+    let resultStore: Posts = { id: '', userId: '', postUrl: '', caption: '', postOriginalUrl: '' };
     // upload to local dir
     const uploadFile: PostImage = await uploadToLocalDir(req);
 

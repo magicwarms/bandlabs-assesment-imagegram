@@ -40,7 +40,7 @@ export default class Posts {
 
     @ManyToOne(() => Users)
     @JoinColumn({ name: 'userId' })
-    user!: Users;
+    user?: Users;
 
     @OneToMany(() => Comments, (comment) => comment.post, { eager: true })
     comments?: Comments[];

@@ -6,21 +6,18 @@ import Comments from '../apps/comments/model/Comments';
 
 const AppDataSource = new DataSource({
     type: 'postgres',
-    // host: 'ec2-52-20-166-21.compute-1.amazonaws.com',
-    host: 'localhost',
+    host: 'ec2-52-20-166-21.compute-1.amazonaws.com',
     port: 5432,
-    // username: 'cebzwqmgztokct',
-    username: 'postgres',
-    // password: '4f61008659d3568b6fe79f2d2839af2c1f10f3fe035ab3057e5ff269339b505d',
-    password: 'root',
+    username: 'cebzwqmgztokct',
+    password: '4f61008659d3568b6fe79f2d2839af2c1f10f3fe035ab3057e5ff269339b505d',
     database: 'bandlabs-assesment',
     applicationName: 'bandlab-assesment-andhana',
-    // ssl: {
-    //     rejectUnauthorized: false,
-    // },
-    synchronize: true,
+    ssl: {
+        rejectUnauthorized: false,
+    },
+    synchronize: process.env.NODE_ENV === 'production' ? false : true,
     entities: [User, Posts, Comments],
-    logging: true,
+    logging: process.env.NODE_ENV === 'production' ? false : true,
 });
 
 export default AppDataSource;
