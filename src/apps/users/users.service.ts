@@ -40,13 +40,10 @@ export const registerUser = async (userData: UserEntity): Promise<Users | Valida
 };
 
 export const loginUser = async (userData: UserEntity): Promise<UserAuthentification | ValidationError[]> => {
-    // PINDAHIN INI KE CONTROLLER AJA
     const checkUsernameExist = await UserRepository.getUserByUsername(userData.username);
     if (!checkUsernameExist) {
-        throw new Error('username unknown');
+        throw new Error("username doesn't exists");
     }
-
-    console.log({ checkUsernameExist });
 
     const userPassword = userData.password as string;
     //compare the password if validated or not

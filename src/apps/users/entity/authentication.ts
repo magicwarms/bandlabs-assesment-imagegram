@@ -10,3 +10,8 @@ export type AuthenticatedUser = {
     id: string;
     username: string;
 };
+
+export type CustomResponse = {
+    code: number;
+    message: string;
+};
