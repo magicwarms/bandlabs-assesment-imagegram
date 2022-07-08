@@ -10,7 +10,7 @@ const AppDataSource = new DataSource({
     port: 5432,
     username: 'cebzwqmgztokct',
     password: '4f61008659d3568b6fe79f2d2839af2c1f10f3fe035ab3057e5ff269339b505d',
-    database: 'bandlabs-assesment',
+    database: 'de1il4h1p95pgd',
     applicationName: 'bandlab-assesment-andhana',
     ssl: {
         rejectUnauthorized: false,
