@@ -45,6 +45,9 @@ export const loginUser = async (userData: UserEntity): Promise<UserAuthentificat
     if (!checkUsernameExist) {
         throw new Error('username unknown');
     }
+
+    console.log({ checkUsernameExist });
+
     const userPassword = userData.password as string;
     //compare the password if validated or not
     const passwordValid = await bcrypt.compare(userPassword, String(checkUsernameExist.password));

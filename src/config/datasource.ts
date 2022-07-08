@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 
 import User from '../apps/users/model/Users';
 import Posts from '../apps/posts/model/Posts';
+import Comments from '../apps/comments/model/Comments';
 
 const AppDataSource = new DataSource({
     type: 'postgres',
@@ -18,7 +19,8 @@ const AppDataSource = new DataSource({
     //     rejectUnauthorized: false,
     // },
     synchronize: true,
-    entities: [User, Posts],
+    entities: [User, Posts, Comments],
+    logging: true,
 });
 
 export default AppDataSource;

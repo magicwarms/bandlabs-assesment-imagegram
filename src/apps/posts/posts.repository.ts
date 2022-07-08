@@ -18,5 +18,31 @@ export const getAll = async (): Promise<Posts[]> => {
             id: `alluserpost`,
             milliseconds: cacheDuration,
         },
+        select: {
+            comments: {
+                user: {
+                    id: true,
+                    username: true,
+                },
+                id: true,
+                comments: true,
+            },
+            user: {
+                id: true,
+                username: true,
+            },
+        },
+        relations: {
+            user: true,
+            comments: {
+                user: true,
+            },
+        },
+    });
+};
+
+export const getById = async (postId: string): Promise<Posts | null> => {
+    return await postRepository.findOneBy({
+        id: postId,
     });
 };

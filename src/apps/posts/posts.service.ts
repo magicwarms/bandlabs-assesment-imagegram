@@ -119,3 +119,7 @@ export const getAllPosts = async (): Promise<Posts[]> => {
     const getAllUserPosts = await PostRepository.getAll();
     return getAllUserPosts.length < 1 ? [] : getAllUserPosts;
 };
+
+export const checkPostById = async (postId: string): Promise<Posts | null> => {
+    return await PostRepository.getById(postId);
+};

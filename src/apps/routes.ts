@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 
 import userRouter from '../apps/users/users.router';
 import postRouter from '../apps/posts/posts.router';
+import commentRouter from '../apps/comments/comments.router';
 
 /**
  * Router Definition
@@ -22,5 +23,6 @@ router.use(
 
 router.use('/users', userRouter);
 router.use('/posts', postRouter);
+router.use('/comments', commentRouter);
 
 export default router;
