@@ -17,7 +17,6 @@ const AppDataSource = new DataSource({
     },
     synchronize: process.env.NODE_ENV === 'production' ? false : true,
     entities: [User, Posts, Comments],
-    logging: process.env.NODE_ENV === 'production' ? false : true,
 });
 
 export default AppDataSource;
