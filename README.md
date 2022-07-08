@@ -11,6 +11,8 @@
 
     1. Postgres DB on HEROKU
     2. Cloudinary for cloud storage
+    3. Typescript
+    4. ExpressJS
 
 ## How to run Backend
 
