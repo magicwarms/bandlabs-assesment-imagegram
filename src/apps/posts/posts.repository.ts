@@ -38,6 +38,9 @@ export const getAll = async (): Promise<Posts[]> => {
                 user: true,
             },
         },
+        order: {
+            createdDate: 'DESC',
+        },
     });
 };
 
