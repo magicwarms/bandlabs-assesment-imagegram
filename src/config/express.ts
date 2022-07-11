@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import cors from 'cors';
+import { existsSync, mkdir } from 'fs';
 
 import errorHandler from '../middleware/errorHandler';
 import notFoundHandler from '../middleware/notFoundHandler';
@@ -30,6 +31,13 @@ const createServer = (): Application => {
 
     // handle 500 Any error
     app.use(errorHandler);
+
+    // create initial upload folder
+    const uploadFolder = process.cwd() + '/public/files';
+    if (!existsSync(uploadFolder))
+        mkdir(uploadFolder, { recursive: true }, (err) => {
+            if (err) throw new Error('Error when created initial upload folder');
+        });
 
     return app;
 };
