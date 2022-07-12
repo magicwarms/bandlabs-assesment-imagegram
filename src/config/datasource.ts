@@ -27,9 +27,6 @@ const AppDataSource = new DataSource({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     applicationName: 'bandlab-assesment-andhana',
-    ssl: {
-        rejectUnauthorized: false,
-    },
     synchronize: process.env.NODE_ENV === 'production' ? false : true,
     entities: [User, Posts, Comments],
 });

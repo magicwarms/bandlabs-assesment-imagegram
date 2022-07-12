@@ -1,27 +1,29 @@
-version: '3.6'
+version: '3.8'
 services:
     api:
         container_name: api
         restart: always
-        build: .
+        build:
+            dockerfile: Dockerfile
+            context: .
         ports:
             - 9000:9000
         env_file: .env
+        environment:
+             NODE_ENV: production
         depends_on:
             - db
-        volumes:
-            - .:/bandlabs-assesment-imagegram
-
     db:
         container_name: postgres
-        image: postgres:13.1
+        image: postgres:14.1-alpine
         ports:
             - '5433:${DB_PORT}'
         volumes:
-            - data:/data/db
+            - db:/var/lib/postgresql/data
         environment:
             - POSTGRES_PASSWORD=${DB_PASSWORD}
             - POSTGRES_DB=${DB_NAME}
             - POSTGRES_USER:${DB_USER}
 volumes:
-    data:
+    db:
+        driver: local
